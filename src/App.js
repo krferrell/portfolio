@@ -1,13 +1,12 @@
 import "./App.css";
-import { About, Home, Projects } from "./Pages";
-import { Route, Link, Routes } from "react-router-dom";
+import { About, Home, Projects } from "./pages";
+import { Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation";
 
 function App() {
   return (
     <div className="App">
-      <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/projects">Projects</Link>
+      <Navigation></Navigation>
       <Routes>
         <Route path="/" exact element={<Home />} />
         <Route path="/about" exact element={<About />} />
