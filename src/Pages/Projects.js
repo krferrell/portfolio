@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import toadTribune from "../assets/dark-logo.png";
-import toadBG from "../assets/toad-tribune.PNG";
-import pokePalaceBG from "../assets/ppBG.png";
-import pokePalaceLogo from "../assets/pokePalaceLogo.PNG";
+import { motion } from "framer-motion";
+
 
 const Projects = () => {
   const [box1Picked, setBox1Picked] = useState(false);
@@ -12,16 +10,19 @@ const Projects = () => {
   const [box4Picked, setBox4Picked] = useState(false);
 
   return (
-    <FlexContainer>
+    <FlexContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Box1
         onClick={() => {
           setBox1Picked(true);
         }}
       >
         <Blur />
-        <ImageContainer>
-          <Image src={toadTribune} />
-        </ImageContainer>
+        <ImageContainer></ImageContainer>
         <Box1Content
           className={box1Picked && "content"}
           box1Picked={box1Picked}
@@ -52,9 +53,7 @@ const Projects = () => {
         }}
       >
         <Blur />
-        <ImageContainer>
-          <Image src={pokePalaceLogo} />
-        </ImageContainer>
+        <ImageContainer></ImageContainer>
         <Box2Content
           className={box2Picked && "content"}
           box2Picked={box2Picked}
@@ -86,9 +85,7 @@ const Projects = () => {
         }}
       >
         <Blur />
-        <ImageContainer>
-          <Image src={toadTribune} />
-        </ImageContainer>
+        <ImageContainer></ImageContainer>
         <Box3Content
           className={box3Picked && "content"}
           box3Picked={box3Picked}
@@ -120,9 +117,7 @@ const Projects = () => {
         }}
       >
         <Blur />
-        <ImageContainer>
-          <Image src={toadTribune} />
-        </ImageContainer>
+        <ImageContainer></ImageContainer>
         <Box4Content
           className={box4Picked && "content"}
           box4Picked={box4Picked}
@@ -154,13 +149,12 @@ const Projects = () => {
 export default Projects;
 
 const FlexContainer = styled.div`
-  height: 80%;
-  width: 70%;
+  height: 65%;
+  width: 65%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  justify-content: space-around;
-  margin: 100px auto;
+  margin: 50px auto;
   gap: 5px;
   border-radius: 5px;
 
@@ -193,7 +187,6 @@ export const Box1 = styled.div`
   display: flex;
   position: relative;
 
-  background-image: url(${toadBG});
   background-size: cover;
 `;
 
@@ -207,7 +200,6 @@ export const Box2 = styled.div`
   display: flex;
   position: relative;
 
-  background-image: url(${pokePalaceBG});
   background-size: cover;
 `;
 
@@ -221,7 +213,6 @@ export const Box3 = styled.div`
   display: flex;
   position: relative;
 
-  background-image: url(${toadBG});
   background-size: cover;
 `;
 
@@ -235,7 +226,6 @@ export const Box4 = styled.div`
   display: flex;
   position: relative;
 
-  background-image: url(${toadBG});
   background-size: cover;
 `;
 
@@ -303,9 +293,7 @@ const Box1Content = styled.div`
   opacity: 0;
   display: flex;
   position: absolute;
-  z-index: ${(props) => props.box1Picked ? 5 : 0};
-
-
+  z-index: ${(props) => (props.box1Picked ? 5 : 0)};
 `;
 
 const Box2Content = styled.div`
@@ -317,7 +305,7 @@ const Box2Content = styled.div`
   opacity: 0;
   display: flex;
   position: absolute;
-  z-index: ${(props) => props.box2Picked ? 5 : 0};
+  z-index: ${(props) => (props.box2Picked ? 5 : 0)};
 `;
 
 const Box3Content = styled.div`
@@ -329,7 +317,7 @@ const Box3Content = styled.div`
   opacity: 0;
   display: flex;
   position: absolute;
-  z-index: ${(props) => props.box3Picked ? 5 : 0};
+  z-index: ${(props) => (props.box3Picked ? 5 : 0)};
 `;
 
 const Box4Content = styled.div`
@@ -341,5 +329,5 @@ const Box4Content = styled.div`
   opacity: 0;
   display: flex;
   position: absolute;
-  z-index: ${(props) => props.box4Picked ? 5 : 0};
+  z-index: ${(props) => (props.box4Picked ? 5 : 0)};
 `;

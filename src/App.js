@@ -1,17 +1,27 @@
 import "./App.css";
-import { About, Home, Projects } from "./pages";
-import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation";
+import { About, Contact, Home, Projects } from "./pages";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { Footer, Logo, Navigation } from "./components";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
+  const location = useLocation();
+
+  
+
   return (
     <div className="App">
+      <Logo></Logo>
       <Navigation></Navigation>
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/about" exact element={<About />} />
-        <Route path="/projects" exact element={<Projects />} />
-      </Routes>
+      <AnimatePresence exitBeforeEnter>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" exact element={<Home />} />
+          <Route path="/about" exact element={<About />} />
+          <Route path="/projects" exact element={<Projects />} />
+          <Route path="/contact" exact element={<Contact />} />
+        </Routes>
+      </AnimatePresence>
+      <Footer />
     </div>
   );
 }
