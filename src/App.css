@@ -4,11 +4,11 @@
   right: 0px;
   bottom: 0px;
   left: 0px;
-  overflow:auto;
-  background-color: #252422;
+  overflow: hidden;
 }
 
-html, body {
+html,
+body {
   /* Height and width fallback for older browsers. */
   height: 100%;
 
@@ -16,4 +16,99 @@ html, body {
 
   margin: 0;
   padding: 0;
+}
+
+body {
+  background: url("./assets/background.png") no-repeat center center fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+:root {
+  --tooltip-text-color: black;
+  --tooltip-background-color: white;
+  --tooltip-margin: 100px;
+  --tooltip-arrow-size: 6px;
+}
+
+/* Wrapping */
+.Tooltip-Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  height: 100px;
+  width: 100px;
+  /* border-radius: 50px; */
+
+  margin-left: 15px;
+  margin-right: 20px;
+}
+
+/* Absolute positioning */
+.Tooltip-Tip {
+  position: absolute;
+
+  color: black;
+  background-color: #edf5e1;
+
+  font-weight: 700;
+  line-height: 1;
+  z-index: 100;
+  white-space: normal;
+
+  width: fit-content;
+  height: 20px;
+  /* box-shadow: 1px 1px 3.5px 1px #8ee4af; */
+  padding: 10px;
+  border-radius: 4px;
+
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+/* CSS border triangles */
+.Tooltip-Tip::before {
+  content: " ";
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-width: var(--tooltip-arrow-size);
+  margin-left: calc(var(--tooltip-arrow-size) * -1);
+}
+
+/* Absolute positioning */
+.Tooltip-Tip.bottom {
+  /* bottom: calc(var(--tooltip-margin) * -1); */
+
+  top: 28px;
+}
+/* CSS border triangles */
+.Tooltip-Tip.bottom::before {
+  bottom: 100%;
+  border-bottom-color: var(--tooltip-background-color);
+}
+
+/* Absolute positioning */
+.Tooltip-Tip.top {
+  bottom: 103%;
+}
+/* CSS border triangles */
+.Tooltip-Tip.top::before {
+  top: 100%;
+  border-top-color: var(--tooltip-background-color);
 }
