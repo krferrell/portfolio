@@ -6,11 +6,8 @@ const Footer = () => {
   return (
     <BottomLine>
       <div className="footer-item">
-        <GitHubIcon style={{height:"30px", width: "30px"}}/>
+        <GitHubIcon style={{ height: "30px", width: "30px" }} />
       </div>
-      {/* <Line />
-
-      <Line /> */}
     </BottomLine>
   );
 };
@@ -39,12 +36,12 @@ const BottomLine = styled.div`
     width: 40px;
     border-radius: 50px;
 
-    background-color: #EDF5E1;
+    background-color: #edf5e1;
   }
 `;
 
 const Line = styled.div`
   width: 40%;
   height: 2px;
-  background-color: #EDF5E1;
+  background-color: #edf5e1;
 `;
