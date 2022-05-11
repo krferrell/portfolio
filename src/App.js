@@ -1,7 +1,7 @@
 import "./App.css";
 import { About, Contact, Home, Projects } from "./pages";
 import { Route, Routes, useLocation } from "react-router-dom";
-import { Footer, Logo, Navigation } from "./components";
+import { Logo, Navigation } from "./components";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
@@ -19,7 +19,6 @@ function App() {
           <Route path="/contact" exact element={<Contact />} />
         </Routes>
       </AnimatePresence>
-      <Footer />
     </div>
   );
 }

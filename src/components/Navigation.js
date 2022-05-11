@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -101,9 +102,9 @@ const Nav = styled.div`
       margin-bottom: 25px;
     }
 
-    :active {
+    /* :active {
       color: green;
-    }
+    } */
 
     :any-link {
       color: #fffcf2;
@@ -140,3 +141,4 @@ const Line2 = styled.div`
 
   border-radius: 10px;
 `;
+

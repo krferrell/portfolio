@@ -39,18 +39,42 @@ const Contact = () => {
           Sorry, the person you are trying to reach is coding.
         </HeroText>
         <HeroText>Please, leave a message after the beep...</HeroText>
-        <HeroTextLarge>Beep.</HeroTextLarge>
+        <HeroTextLarge
+          initial={{ x: "-100px", opacity:0 }}
+          animate={{ x: 0, opacity:1 }}
+          transition={{ duration: 1, delay: 2.5 }}
+        >
+          Beep.
+        </HeroTextLarge>
       </TextContainer>
-      <form ref={form} onSubmit={sendEmail}>
-        <InputContainer>
-          <Input type="text" className="name" name="name"></Input>
-          <Input type="email" className="email" name="email"></Input>
-        </InputContainer>
-        <InputContainer>
-          <Input type="text" className="message" name="message"></Input>
-        </InputContainer>
-        <SubmitButton type="submit">Send</SubmitButton>
-      </form>
+      <FormContainer>
+        <Form ref={form} onSubmit={sendEmail}>
+          <ContactFormBlurb>Send me an email if you want to connect </ContactFormBlurb>
+          <InputContainer>
+            <Input
+              type="text"
+              className="name"
+              name="name"
+              placeholder="Name"
+            ></Input>
+            <Input
+              type="email"
+              className="email"
+              name="email"
+              placeholder="Email"
+            ></Input>
+          </InputContainer>
+          <InputContainer>
+            <TextArea
+              type="text"
+              className="message"
+              name="message"
+              placeholder="Message"
+            ></TextArea>
+          </InputContainer>
+          <SubmitButton type="submit">GET IN TOUCH</SubmitButton>
+        </Form>
+      </FormContainer>
     </ContentContainer>
   );
 };
@@ -60,20 +84,16 @@ export default Contact;
 const ContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-
-  height: 80%;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 `;
 
 const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-
   height: 60%;
-  width: 90%;
+  width: 50%;
 
-  margin-left: 50px;
 `;
 
 const HeroText = styled.p`
@@ -81,53 +101,98 @@ const HeroText = styled.p`
   color: #edf5e1;
 `;
 
-const HeroTextLarge = styled.p`
+const HeroTextLarge = styled(motion.p)`
   font-size: 48px;
   color: #8ee4af;
+  margin-top: 25px;
 `;
 
 const InputContainer = styled.div`
   display: flex;
-  /* align-items: center; */
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 
   .name {
-    height: 20px;
-    width: 220px;
+    height: 40px;
+    width: 90%;
+    margin-bottom: 20px;
+    border-radius: 6px;
   }
 
   .email {
-    height: 20px;
-    width: 220px;
+    height: 40px;
+    width: 90%;
+    margin-bottom: 20px;
+    border-radius: 6px;
   }
 
   .message {
-    height: 160px;
-    width: 500px;
-    margin-top: 50px;
+    height: 120px;
+    width: 90%;
+  }
+`;
+
+const Form = styled.form`
+  background-color: #1a1a1a;
+  border-radius: 14px;
+  height: 100%;
+  width: 85%;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const FormContainer = styled.div`
+  width: 50%;
+  display: flex;
+  margin-top: 50px;
+`;
+
+const TextArea = styled.textarea`
+  border: none;
+  border-radius: 8px;
+  padding: 7px;
+  resize: none;
+  background-color: #edf5e1;
+  :focus {
+    outline: #8ee4af;
+    border-color: #8ee4af;
   }
 `;
 
 const Input = styled.input`
-  color: red;
-  margin-left: 50px;
+  // margin-left: 50px;
   border: none;
   border-radius: 10px;
-
+  padding-left: 10px;
+  background-color: #edf5e1;
   :focus {
-    outline: none !important;
+    outline: #8ee4af !important;
     border-color: #8ee4af;
-    box-shadow: 0 0 10px #8ee4af;
   }
 `;
 
 const SubmitButton = styled.button`
-  width: 85px;
-
+  width: 25%;
+  height: 40px;
   padding: 3px;
-  border-radius: 15px;
+  border-radius: 6px;
 
   border: none;
 
-  margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
+
+  font-weight: bold;
+  background-color: #8ee4af;
+  color: #1a1a1a;
+`;
+
+const ContactFormBlurb = styled.p`
+  color: #edf5e1;
+  font-size: 24px;
+  line-height: 24px;
+  margin-bottom: 20px;
 `;

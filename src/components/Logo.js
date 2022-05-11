@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import PortfolioLogoSvg from "../assets/PortfolioLogoSvg";
 
 const Logo = () => {
   return (
     <LogoContainer>
-      <LogoIcon>Photo</LogoIcon>
+      <PortfolioLogoSvg />
       <WordContainer>
         <span>Kenneth Ferrell</span>
         <span>Frontend Web Dev</span>
@@ -26,7 +27,7 @@ const LogoContainer = styled.div`
 const WordContainer = styled.div`
   display: flex;
   flex-direction: column;
-
+  margin-left: 25px;
   color: #edf5e1;
 `;
 
