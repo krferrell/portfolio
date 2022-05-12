@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { CloseIcon, GitHubIcon, WebIcon } from "../assets/navIcons";
 import ColorBox from "./ColorBox";
+import Pagination from "./Pagination";
 
 const modalAnimation = {
   hidden: { y: "-100vh", opacity: 0 },
@@ -26,6 +27,8 @@ const overlayAnimation = {
 };
 
 const Modal = ({ data, setIsModal }) => {
+  const [current, setCurrent] = useState(0);
+
   return (
     <Overlay
       variants={overlayAnimation}
@@ -85,14 +88,21 @@ const Modal = ({ data, setIsModal }) => {
               </ScrollContainer>
             </LeftColumn>
             <RightColumn>
-              <ImageContainer></ImageContainer>
+              <ImageContainer style={{flexDirection:"column"}}>
+                {data.images?.map((slide, index) => {
+                  return (
+                    <>{index === current && <div key={index}>{slide}</div>}</>
+                  );
+                })}
+              <Pagination data={data} current={current} setCurrent={setCurrent}/>
+              </ImageContainer>
             </RightColumn>
           </ColumnContainer>
           <BottomRow>
             <BottomContainer>
               <SmallTitle>Tech</SmallTitle>
               <BottomContainerRow>
-                {data.techs.map((tech) => {
+                {data.techs?.map((tech) => {
                   return <div>{tech}</div>;
                 })}
               </BottomContainerRow>
@@ -101,7 +111,7 @@ const Modal = ({ data, setIsModal }) => {
             <BottomContainer>
               <SmallTitle>Color Palatte</SmallTitle>
               <BottomContainerRow>
-                {data.colors.map((color) => {
+                {data.colors?.map((color) => {
                   return <ColorBox color={color} />;
                 })}
               </BottomContainerRow>
@@ -110,7 +120,7 @@ const Modal = ({ data, setIsModal }) => {
             <BottomContainer>
               <SmallTitle>Typography</SmallTitle>
               <BottomContainerColumn>
-                {data.typography.map((font) => {
+                {data.typography?.map((font) => {
                   return <FontBox>{font}</FontBox>;
                 })}
               </BottomContainerColumn>
@@ -147,7 +157,7 @@ const StyledModal = styled(motion.div)`
 
   max-width: 1400px;
   max-height: 800px;
-  border-radius: 5px;
+  border-radius: 10px;
   position: relative;
 
   color: #edf5e1;
@@ -169,6 +179,8 @@ const Close = styled(CloseIcon)`
 
   margin-top: 5px;
   margin-right: 5px;
+
+  z-index: 100;
 `;
 
 const Container = styled.div`
@@ -201,6 +213,7 @@ const ScrollContainer = styled.div`
 `;
 const RightColumn = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -230,10 +243,20 @@ const TitleSection = styled.div`
 `;
 
 const ImageContainer = styled.div`
-  background-color: lightgreen;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  width: 100%;
+  margin-top: 15%;
 
-  height: 70%;
-  width: 70%;
+  img {
+    border: 2px solid #edf5e1;
+    border-radius: 10px;
+    height: 254px;
+    width: 354px;
+  }
 `;
 
 const BottomRow = styled.div`

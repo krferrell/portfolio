@@ -6,17 +6,42 @@ import {
   StyledCompIcon,
   TsIcon,
 } from "../assets/skillsIcons";
+import {
+  toadTribune1,
+  toadTribune2,
+  toadTribune3,
+  toadTribune4,
+  toadTribune5,
+} from "../assets/toadTribune";
+import {
+  pokePalace1,
+  pokePalace2,
+  pokePalace3,
+  pokePalace4,
+  pokePalace5,
+  pokePalace6,
+} from "../assets/pokePalace";
+import { newsFlash1, newsFlash2, newsFlash3 } from "../assets/newsFlash";
+import { ordrslip1, ordrslip2, ordrslip3, ordrslip4 } from "../assets/ordrslip";
+import { laCalc1, laCalc2, laCalc3, laCalc4 } from "../assets/listingAlert";
+import { toadtv1, toadtv2, toadtv3, toadtv4 } from "../assets/toadtv";
 
 export const projectsData = [
   {
     about:
       "The Toad Tribune was the final group project of the React apprenticeship. Our team of 3, was tasked with building an app using any API we wanted. Our team decided to build a news application. We used NewsAPI for everything news related and a weather API to tell the users the weather at their location. Since this application was relatively simplistic, we decided to learn and implement TypeScript for it. The Toad Tribune is has an main page of news that displays varous topics as well as a search feature. We decided to design the layout to reflect a newspaper.",
     challenges:
-      "Since we decided to learn TypeScript for The Toad Tribune, we faced many challenges. One of the biggest was how to fully utilize TypeScript in a meaningful way. Our team used FIX LATER (classes and interfaces ...)",
+      "Since we decided to learn TypeScript for The Toad Tribune, we faced many challenges. One of the biggest was how to fully utilize TypeScript in a meaningful way. Our team used a class based approach to model the data from the API. We outfitted our classes with default values to make sure each article could be presented even if there was missing data. Due to the large abount of data that is being pulled from the API, load times could be high. Since we had to wait for the data from the API to load before we were able to display the articles on the page, we setup loading placeholders so that when the data arrives, the flow of the page does not change. ",
     description:
       "Do you like to know what is happening in the world? Do you like things that look nice? Well then, look no further. The Toad Tribune is a modern news app that displays information in an easily digestible way. ",
     colors: ["#E3dAC9", "#1A1A1A", "#262626", "#757575", "#AD9363", "#E2D9C8"],
-    image: "",
+    images: [
+      <img src={toadTribune1} alt="Toad Tribune Home Page" />,
+      <img src={toadTribune2} alt="Toad Tribune Home Page" />,
+      <img src={toadTribune3} alt="Toad Tribune Home Page" />,
+      <img src={toadTribune4} alt="Toad Tribune Home Page" />,
+      <img src={toadTribune5} alt="Toad Tribune Home Page" />,
+    ],
     links: {
       gitHubLink: "https://github.com/JayDampitan/news-app",
       webSiteLink: "https://the-toad-tribune-659c7.web.app/",
@@ -31,7 +56,7 @@ export const projectsData = [
   },
   {
     about:
-      "PokePalace was the final team project of the apprenticeship. The only requirement for the project was to use the PokeAPi. Our team decided to create PokePalace, a gambling style gacha game with a Pokemon theme. The main goal is to catch em' all and maybe get rich in the process. The user starts with 10,000 PokeCoins. They can then buy and sell pokemon or play the PokeSlots. Each Pokemon has a value that is determined by various traits. There is a badge style achievement system which challenges users to various tasks. You are also able to look up any Pokemon and see detailed information about them. This can be anything from the size to which games they appeared in.",
+      "PokePalace was the final team project of the apprenticeship. The only requirement for the project was to use the PokeAPI. Our team decided to create PokePalace, a gambling style gacha game with a Pokemon theme. The main goal is to catch em' all and maybe get rich in the process. The user starts with 10,000 PokeCoins. They can then buy and sell pokemon or play the PokeSlots. Each Pokemon has a value that is determined by various traits. There is a badge style achievement system which challenges users to various tasks. You are also able to look up any Pokemon and see detailed information about them. This can be anything from the size to which games they appeared in.",
     challenges:
       "While making PokePalace, we encountered many challenges. One of them was implementing the badge style achievement system. This challenge required a ton of logic to decide when a user's inventory had the correct Pokemon to complete a badge. We decided to let Redux handle this by creating a reducer for each badge. Since we needed to check for a badge completion every time a user acquired a new Pokemon - and there are many ways to acquire a new Pokemon - we simply had the app dispatch the transaction details to Redux and let the reducers handle the rest. The benifit to this approach was that the transaction behavior was consistent accross the entire app and was easily maintainable because the logic was centralized to Redux.",
     description:
@@ -45,7 +70,14 @@ export const projectsData = [
       "#8FBD6D",
       "#F37D7D",
     ],
-    image: "",
+    images: [
+      <img src={pokePalace1} alt="Toad Tribune Home Page" />,
+      <img src={pokePalace2} alt="Toad Tribune Home Page" />,
+      <img src={pokePalace3} alt="Toad Tribune Home Page" />,
+      <img src={pokePalace4} alt="Toad Tribune Home Page" />,
+      <img src={pokePalace5} alt="Toad Tribune Home Page" />,
+      <img src={pokePalace6} alt="Toad Tribune Home Page" />,
+    ],
     links: {
       gitHubLink: "https://github.com/gonzalespaulb/Pokemon-App",
       webSiteLink: "https://pokepalace-fa118.web.app/",
@@ -67,7 +99,11 @@ export const projectsData = [
       "Interested in tattoo related news, but tired of scrolling throught pages of daily news on other apps just to find it? News Flash has got you covered! News Flash is a modern news app that delivers articles related to tattoos in a minimalist fashion.",
     colors: ["#363E3C", "#696C36", "#B4B849", "#FFFFFF"],
     gitHubLink: "",
-    image: "",
+    images: [
+      <img src={newsFlash1} alt="Toad Tribune Home Page" />,
+      <img src={newsFlash2} alt="Toad Tribune Home Page" />,
+      <img src={newsFlash3} alt="Toad Tribune Home Page" />,
+    ],
     links: {
       gitHubLink: "",
       webSiteLink: "https://ts-news-flash-client.herokuapp.com/",
@@ -89,7 +125,12 @@ export const projectsData = [
       "This application was designed and developed to help sell software to restaurants. A years worth of data was collected and used to come up with the calculations that drive this calculator. Given certain data, this calculator will return the average return on investment for people who were interested in purchasing Ordrslip.",
     colors: ["#FFFFFF", "#F93822", "#55DA38", "#0077CC", "#000000"],
     gitHubLink: "",
-    image: "",
+    images: [
+      <img src={ordrslip1} alt="Toad Tribune Home Page" />,
+      <img src={ordrslip2} alt="Toad Tribune Home Page" />,
+      <img src={ordrslip3} alt="Toad Tribune Home Page" />,
+      <img src={ordrslip4} alt="Toad Tribune Home Page" />,
+    ],
     links: {
       gitHubLink: "",
       webSiteLink: "https://ordrslip.com/osreactcalculator/",
@@ -109,7 +150,12 @@ export const projectsData = [
     description:
       "This multipurpose calculator was designed and developed as a marketing tool for people interested in the real estate business. It's stylish and responsive design makes it a go to option for calculating useful real estate key performance indicators.",
     colors: ["#212226", "#F5A800", "#4D75BF", "#6BB3F2", "#69B1F0", "#E5E5E5"],
-    image: "",
+    images: [
+      <img src={laCalc1} alt="Toad Tribune Home Page" />,
+      <img src={laCalc2} alt="Toad Tribune Home Page" />,
+      <img src={laCalc3} alt="Toad Tribune Home Page" />,
+      <img src={laCalc4} alt="Toad Tribune Home Page" />,
+    ],
     links: { gitHubLink: "", webSiteLink: "" },
     name: "Listing Alert Calculator",
     techs: [
@@ -120,13 +166,18 @@ export const projectsData = [
   },
   {
     about:
-      "ToadTV is the first React app that I worked on. I was apart of a team of 5 during the beginning of a year long React apprenticeship. Our lead gave us a the assignment to create a movie app that allows users to look up movies and get details about them. We used the OMDB API to fetch all of the data we used. ToadTV is primarily designed for users to be able to find out more about their favorite films, while interacting with a clean UI. ",
+      "ToadTV is the first React app that I worked on. I was a part of a team of 5 during the beginning of a year long React apprenticeship. Our lead gave us a the assignment to create a movie app that allows users to look up movies and get details about them. We used the OMDB API to fetch all of the data we used. ToadTV is primarily designed for users to be able to find out more about their favorite films, while interacting with a clean UI. ",
     challenges:
       "Since this was the first application a lot of us had ever built, each step of the way we faced challenges. This first, was coming up with a design and discussing functionality. After a week of each of us creating a design for the application, we took elements from each person's vision and put it together. Once the design process was finished, we decided to come up with a game plan on how to tackle breaking the project into small enough chunks that we could finish the project in the month of allotted time. We ended up creating issues on a GitHub repository to keep us on track with completing our minimal viable product and to track bugs along the way. This allowed us to stay organized throughout the coding process",
     description:
       "Looking for some information about a movie? Look no further! ToadTV delivers a quick and stylish way to find movies and view details about them.",
     colors: ["#8ED0EF", "#4A3800", "#986900", "#A89DBA", "#333333"],
-    image: "",
+    images: [
+      <img src={toadtv1} alt="Toad Tribune Home Page" />,
+      <img src={toadtv2} alt="Toad Tribune Home Page" />,
+      <img src={toadtv3} alt="Toad Tribune Home Page" />,
+      <img src={toadtv4} alt="Toad Tribune Home Page" />,
+    ],
     links: {
       gitHubLink:
         "https://github.com/Lap343/2021-React-Apprenticeship/tree/development/movie-app",

@@ -6,7 +6,7 @@ import { Modal } from "../components";
 import Eye from "../assets/navIcons/components/Eye";
 
 const Projects = () => {
-  const [isHover, setIsHover] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isModal, setIsModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -16,9 +16,9 @@ const Projects = () => {
         <>
           <Card
             onMouseEnter={() => {
-              setIsHover(true);
+              setIsHovered(true);
             }}
-            onMouseExit={() => setIsHover(false)}
+            onMouseExit={() => setIsHovered(false)}
             initial={{ opacity: 0, x: "-50", y: "-50" }}
             animate={{
               opacity: 1,
@@ -26,8 +26,8 @@ const Projects = () => {
               y: 0,
             }}
             transition={{
-              duration: isHover ? 0 : 0.3,
-              delay: isHover ? 0 : index * 0.3,
+              duration: isHovered ? 0 : 0.3,
+              delay: isHovered ? 0 : index * 0.3,
             }}
             whileHover={{
               scale: [1, 1.01, 1.01, 1],
@@ -43,7 +43,7 @@ const Projects = () => {
             <Description>
               {data.description}
             </Description>
-            <Eyecon isHover={isHover} />
+            <Eyecon isHovered={isHovered} />
           </Card>
           <AnimatePresence>
             {isModal && currentIndex === index && (

@@ -1,30 +1,45 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { ContactModal } from "../components";
 
 const Contact = () => {
+  const [isErrorText, setIsErrorText] = useState(false);
+  const [isSuccessText, setIsSuccessText] = useState(false);
   const form = useRef();
+  const input1 = useRef();
+  const input2 = useRef();
+  const input3 = useRef();
 
   const sendEmail = (e) => {
-    console.log(process.env.REACT_APP_SERVICE_ID);
     e.preventDefault();
-    emailjs
-      .sendForm(
-        `${process.env.REACT_APP_SERVICE_ID}`,
-        `${process.env.REACT_APP_TEMPLATE_ID}`,
-        form.current,
-        `${process.env.REACT_APP_PUBLIC_ID}`
-      )
-      .then(
-        function (response) {
-          console.log("SUCCESS!", response.status, response.text);
-        },
-        function (error) {
-          console.log("FAILED...", error);
-        }
-      );
-    form.current.reset();
+    if (
+      input1.current.value !== "" &&
+      input2.current.value !== "" &&
+      input3.current.value !== ""
+    ) {
+      emailjs
+        .sendForm(
+          `${process.env.REACT_APP_SERVICE_ID}`,
+          `${process.env.REACT_APP_TEMPLATE_ID}`,
+          form.current,
+          `${process.env.REACT_APP_PUBLIC_ID}`
+        )
+        .then(
+          function (response) {
+            if (response.status === 200) {
+              setIsSuccessText(true);
+            }
+          },
+          function (error) {
+            console.log("FAILED...", error);
+          }
+        );
+      form.current.reset();
+    } else {
+      setIsErrorText(true);
+    }
   };
 
   return (
@@ -40,8 +55,8 @@ const Contact = () => {
         </HeroText>
         <HeroText>Please, leave a message after the beep...</HeroText>
         <HeroTextLarge
-          initial={{ x: "-100px", opacity:0 }}
-          animate={{ x: 0, opacity:1 }}
+          initial={{ x: "-100px", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 2.5 }}
         >
           Beep.
@@ -49,15 +64,33 @@ const Contact = () => {
       </TextContainer>
       <FormContainer>
         <Form ref={form} onSubmit={sendEmail}>
-          <ContactFormBlurb>Send me an email if you want to connect </ContactFormBlurb>
+          <AnimatePresence>
+            {isErrorText && (
+              <ContactModal
+                setIsErrorText={setIsErrorText}
+                isErrorText={isErrorText}
+              />
+            )}
+            {isSuccessText && (
+              <ContactModal
+                setIsSuccessText={setIsSuccessText}
+                isSuccessText={isSuccessText}
+              />
+            )}
+          </AnimatePresence>
+          <ContactFormBlurb>
+            Send me an email if you want to connect{" "}
+          </ContactFormBlurb>
           <InputContainer>
             <Input
+              ref={input1}
               type="text"
               className="name"
               name="name"
               placeholder="Name"
             ></Input>
             <Input
+              ref={input2}
               type="email"
               className="email"
               name="email"
@@ -66,6 +99,7 @@ const Contact = () => {
           </InputContainer>
           <InputContainer>
             <TextArea
+              ref={input3}
               type="text"
               className="message"
               name="message"
@@ -93,7 +127,6 @@ const TextContainer = styled.div`
   flex-direction: column;
   height: 60%;
   width: 50%;
-
 `;
 
 const HeroText = styled.p`
@@ -134,6 +167,7 @@ const InputContainer = styled.div`
 `;
 
 const Form = styled.form`
+  position: relative;
   background-color: #1a1a1a;
   border-radius: 14px;
   height: 100%;

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import {uiSize} from "../utils/mediaQ"
 import {
   AboutMeIcon,
   ContactIcon,
@@ -111,8 +112,8 @@ const Nav = styled.div`
     }
   }
 
-  @media only screen and (max-width: 948px) {
-    justify-content: center;
+  @media ${uiSize.bigTablet} {
+    justify-content: flex-end;
 
     margin-left: 15px;
     margin-right: 15px;

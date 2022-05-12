@@ -15,25 +15,9 @@ import {
 } from "../assets/skillsComponents";
 import { ToolTip } from "../components/";
 
-const spinner = {
-  hidden: {
-    rotate: 0,
-  },
-  visible: {
-    rotate: 360,
-    backgroundColor: "blue",
-    transition: { duration: 1 },
-  },
-};
-
 const About = () => {
   return (
-    <TextContainer
-    // as={motion.div}
-    // initial={{ opacity: 0 }}
-    // animate={{ opacity: 1 }}
-    // exit={{ opacity: 0 }}
-    >
+    <TextContainer>
       <Text>
         Hello world! My name is Kenny and I am a frontend web developer based in
         California. What that really means is I get to bring ideas to life by
@@ -45,9 +29,7 @@ const About = () => {
         I am currently employed in a React apprenticeship program through
         Bitwise Industries. Throughout this apprenticeship I have been lucky
         enough to be able to collaborate with some amazing people on some fun
-        projects. I have also developed production level applets for the
-        marketing team at Bitwise Ventures to help support Tatstat, Ordrslip,
-        and Listing Alert.
+        projects. While in the apprenticeship, I have also done some development 
       </Text>
       <Text>
         Before web development, my passion was mathematics and teaching. I
@@ -109,7 +91,7 @@ const TextContainer = styled.div`
 `;
 
 const Text = styled.p`
-  font-size: 32px;
+  font-size: 28px;
   color: #edf5e1;
 
   margin-right: 60px;
