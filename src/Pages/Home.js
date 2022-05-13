@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { uiSize } from "../utils/mediaQ";
 
 const heroTextVariant = {
   hidden1: { y: "-100vh", opacity: 0 },
@@ -42,12 +43,13 @@ const Home = () => {
         </GreenHeroText>
       </TextContainer>
       <TextContainer>
-        <HeroText>I am a </HeroText>
+        <HeroText className="iAm">I am a </HeroText>
         <GreenHeroText
           variants={heroTextVariant}
           initial="hidden2"
           animate="visible2"
           whileHover="hover"
+          className="greenText"
         >
           FRONTEND WEB DEVELOPER
         </GreenHeroText>
@@ -69,15 +71,36 @@ const HeroContainer = styled(motion.div)`
 
 const TextContainer = styled.div`
   display: flex;
-  justify-content: start;
   align-items: center;
   height: 50%;
   width: 100%;
+
+  .iAm {
+    @media ${uiSize.mobile} {
+      width: 100px;
+      text-align: center;
+    }
+  }
+
+  .greenText{
+    @media ${uiSize.mobile} {
+      justify-content: center;
+      text-align: center;
+    }
+  }
 `;
 
 const HeroText = styled.p`
   font-size: 48px;
   color: #edf5e1;
+  width: auto;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 30px;
+  }
+  @media ${uiSize.mobile} {
+    font-size: 20px;
+  }
 `;
 
 const GreenHeroText = styled(motion.p)`
@@ -85,4 +108,13 @@ const GreenHeroText = styled(motion.p)`
   font-weight: bold;
   color: #8ee4af;
   margin-left: 20px;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 40px;
+  }
+
+  @media ${uiSize.mobile} {
+    font-size: 26px;
+    margin-left: 15px;
+  }
 `;
