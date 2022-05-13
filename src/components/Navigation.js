@@ -1,8 +1,7 @@
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {uiSize} from "../utils/mediaQ"
+import { uiSize } from "../utils/mediaQ";
 import {
   AboutMeIcon,
   ContactIcon,
@@ -85,6 +84,16 @@ const Nav = styled.div`
   right: 0;
   top: 0;
 
+  @media ${uiSize.smallTablet} {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 100px;
+    flex-direction: row;
+  }
+
+
   .nav-item {
     display: flex;
     justify-content: center;
@@ -97,10 +106,16 @@ const Nav = styled.div`
     width: 55px;
     border-radius: 50px;
 
-    text-decoration: none;
+    @media ${uiSize.smallTablet} {
+        margin: 0 10px;
+      }
 
     &:nth-child(5) {
       margin-bottom: 25px;
+
+      @media ${uiSize.smallTablet} {
+        margin-bottom: 0;
+      }
     }
 
     /* :active {
@@ -110,13 +125,6 @@ const Nav = styled.div`
     :any-link {
       color: #fffcf2;
     }
-  }
-
-  @media ${uiSize.bigTablet} {
-    justify-content: flex-end;
-
-    margin-left: 15px;
-    margin-right: 15px;
   }
 
   .home,
@@ -133,6 +141,10 @@ const Line1 = styled.div`
   background-color: #edf5e1;
 
   border-radius: 10px;
+
+  @media ${uiSize.smallTablet} {
+    display: none;
+  }
 `;
 
 const Line2 = styled.div`
@@ -141,5 +153,7 @@ const Line2 = styled.div`
   background-color: #edf5e1;
 
   border-radius: 10px;
+  @media ${uiSize.smallTablet} {
+    display: none;
+  }
 `;
-
