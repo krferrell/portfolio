@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { uiSize } from "../utils/mediaQ";
 
 const errorModal = {
   hiddenOverlay: { opacity: 0 },
@@ -85,7 +86,19 @@ const Error = styled(motion.div)`
   color: #edf5e1;
   padding: 23px;
   text-align: center;
+
+  @media ${uiSize.smallTablet}{
+    height: 300px;
+    width: 400px;
+  }
+
+  @media ${uiSize.mobile}{
+      height: 200px;
+      width: 270px;
+    }
 `;
+
+
 const ErrorLayer = styled(motion.div)`
   position: absolute;
   height: 100%;

@@ -4,6 +4,7 @@ import { projectsData } from "../utils/data";
 import { AnimatePresence, motion } from "framer-motion";
 import { Modal } from "../components";
 import Eye from "../assets/navIcons/components/Eye";
+import { uiSize } from "../utils/mediaQ";
 
 const Projects = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -40,9 +41,7 @@ const Projects = () => {
             }}
           >
             <Title>{data.name}</Title>
-            <Description>
-              {data.description}
-            </Description>
+            <Description>{data.description}</Description>
             <Eyecon isHovered={isHovered} />
           </Card>
           <AnimatePresence>
@@ -70,8 +69,20 @@ const FlexContainer = styled(motion.div)`
   place-items: center;
   height: 80%;
   width: 75%;
-  margin: 1% auto;
+  margin: 0 auto;
   border-radius: 5px;
+
+  @media ${uiSize.smallTablet} {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 80%;
+  }
+  @media ${uiSize.mobile} {
+    height: 70%;
+    margin-bottom: 24px;
+  }
 `;
 
 const Eyecon = styled(Eye)`
@@ -81,6 +92,10 @@ const Eyecon = styled(Eye)`
 
   margin-right: 15px;
   margin-bottom: 5px;
+
+  @media ${uiSize.mobile} {
+    display: none;
+  }
 `;
 
 const Card = styled(motion.div)`
@@ -88,29 +103,69 @@ const Card = styled(motion.div)`
   max-height: 250px;
   width: 90%;
 
-  border: 1px solid #edf5e1;
+  border: 1px solid #1a1a1a;
   background-color: #1a1a1a;
   border-radius: 14px;
+
+
+  padding: 20px;
 
   position: relative;
   cursor: pointer;
 
   &:hover {
     ${Eyecon} {
-      fill: #8EE4AF;
+      fill: #8ee4af;
       /* cursor: pointer; */
     }
+  }
+
+  @media ${uiSize.smallTablet} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100px;
+    justify-content: space-evenly;
+  }
+
+  @media ${uiSize.mobile} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 55px;
+    /* padding: 0 30px; */
+    /* height: 100px; */
   }
 `;
 
 const Title = styled.span`
   font-size: 32px;
-  margin-top: 15px;
-  margin-left: 15px;
+  /* margin-top: 15px;
+  margin-left: 15px; */
   color: #8ee4af;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 16px;
+    margin: 0;
+  }
+
+  @media ${uiSize.mobile} {
+    font-size: 18px;
+    margin: 0;
+  }
 `;
 
 const Description = styled.p`
   color: #edf5e1;
-  margin: 35px 20px 0px 50px;
+  /* margin: 35px 20px 0px 50px; */
+  margin-top: 15px;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 12px;
+    margin: 0 20px;
+  }
+
+  @media ${uiSize.mobile} {
+    display: none;
+  }
 `;

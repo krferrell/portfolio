@@ -4,6 +4,21 @@ import { motion } from "framer-motion";
 import { CloseIcon, GitHubIcon, WebIcon } from "../assets/navIcons";
 import ColorBox from "./ColorBox";
 import Pagination from "./Pagination";
+import { uiSize } from "../utils/mediaQ";
+
+const imageSlider = {
+  hidden: {
+    opacity: 0,
+    x: "10px",
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.2,
+    },
+  },
+};
 
 const modalAnimation = {
   hidden: { y: "-100vh", opacity: 0 },
@@ -88,13 +103,28 @@ const Modal = ({ data, setIsModal }) => {
               </ScrollContainer>
             </LeftColumn>
             <RightColumn>
-              <ImageContainer style={{flexDirection:"column"}}>
+              <ImageContainer style={{ flexDirection: "column" }}>
                 {data.images?.map((slide, index) => {
                   return (
-                    <>{index === current && <div key={index}>{slide}</div>}</>
+                    <>
+                      {index === current && (
+                        <motion.div
+                          variants={imageSlider}
+                          initial="hidden"
+                          animate="visible"
+                          key={index}
+                        >
+                          {slide}
+                        </motion.div>
+                      )}
+                    </>
                   );
                 })}
-              <Pagination data={data} current={current} setCurrent={setCurrent}/>
+                <Pagination
+                  data={data}
+                  current={current}
+                  setCurrent={setCurrent}
+                />
               </ImageContainer>
             </RightColumn>
           </ColumnContainer>
@@ -108,7 +138,7 @@ const Modal = ({ data, setIsModal }) => {
               </BottomContainerRow>
             </BottomContainer>
 
-            <BottomContainer>
+            <BottomContainer className="removeMobile">
               <SmallTitle>Color Palatte</SmallTitle>
               <BottomContainerRow>
                 {data.colors?.map((color) => {
@@ -117,7 +147,7 @@ const Modal = ({ data, setIsModal }) => {
               </BottomContainerRow>
             </BottomContainer>
 
-            <BottomContainer>
+            <BottomContainer className="removeMobile">
               <SmallTitle>Typography</SmallTitle>
               <BottomContainerColumn>
                 {data.typography?.map((font) => {
@@ -161,6 +191,18 @@ const StyledModal = styled(motion.div)`
   position: relative;
 
   color: #edf5e1;
+
+  @media ${uiSize.smallTablet} {
+    max-width: 90vw;
+    width: 100%;
+    height: 100%;
+  }
+  @media ${uiSize.mobile} {
+    width: 100%;
+    max-width: 100vw;
+    text-align: start;
+    margin: 0;
+  }
 `;
 
 const Close = styled(CloseIcon)`
@@ -181,6 +223,13 @@ const Close = styled(CloseIcon)`
   margin-right: 5px;
 
   z-index: 100;
+
+  @media ${uiSize.mobile} {
+    height: 50px;
+    width: 50px;
+    margin-top: 18px;
+    margin-right: 10px;
+  }
 `;
 
 const Container = styled.div`
@@ -191,12 +240,23 @@ const Container = styled.div`
 const ColumnContainer = styled.div`
   display: flex;
   height: 80%;
+
+  @media ${uiSize.smallTablet} {
+    height: 85%;
+    justify-content: center;
+  }
 `;
 const IconContanier = styled.div`
   margin-left: 25px;
   height: 100%;
   display: flex;
   align-items: center;
+  overflowx: hidden;
+
+  @media ${uiSize.mobile} {
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
 `;
 const LeftColumn = styled.div`
   display: flex;
@@ -204,12 +264,20 @@ const LeftColumn = styled.div`
   margin-left: 15px;
   width: 60%;
   height: 100%;
+
+  @media ${uiSize.smallTablet} {
+    width: 90%;
+    text-align: start;
+    margin: 0;
+  }
 `;
 
 const ScrollContainer = styled.div`
   display: flex;
   flex-direction: column;
   overflow: auto;
+
+  padding-bottom: 25px;
 `;
 const RightColumn = styled.div`
   display: flex;
@@ -219,27 +287,72 @@ const RightColumn = styled.div`
   align-items: center;
   height: 100%;
   width: 40%;
+
+  @media ${uiSize.smallTablet} {
+    display: none;
+  }
 `;
 
 const PrimaryText = styled.p`
   padding: 0 23px;
   font-size: 18px;
+
+  @media ${uiSize.smallTablet} {
+    padding: 0 10px;
+  }
 `;
 const Title = styled.span`
   font-size: 36px;
   padding-left: 23px;
+
+  @media ${uiSize.smallTablet} {
+    padding-left: 10px;
+  }
+
+  @media ${uiSize.mobile} {
+    font-size: 28px;
+  }
 `;
 const SubHeaders = styled.span`
   font-size: 24px;
 `;
-const AboutSection = styled.div``;
-const ChallengeSection = styled.div``;
+const AboutSection = styled.div`
+  @media ${uiSize.smallTablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding:0 25px;
+  }
+  @media ${uiSize.mobile} {
+    padding:0 25px;
+  }
+`;
+const ChallengeSection = styled.div`
+  @media ${uiSize.smallTablet} {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding:0 25px;
+  }
+  @media ${uiSize.mobile} {
+    padding:0 25px;
+  }
+`;
 const TitleSection = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
 
-  margin-bottom: 20px;
+  @media ${uiSize.mobile} {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 65px;
+    margin-bottom: 0;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -250,6 +363,7 @@ const ImageContainer = styled.div`
   height: 60%;
   width: 100%;
   margin-top: 15%;
+  overflow: hidden;
 
   img {
     border: 2px solid #edf5e1;
@@ -268,6 +382,19 @@ const BottomRow = styled.div`
   align-items: center;
 
   border-radius: 0 0 5px 5px;
+
+  @media ${uiSize.smallTablet} {
+    height: 15%;
+  }
+  @media ${uiSize.mobile} {
+    height: 20%;
+  }
+
+  .removeMobile {
+    @media ${uiSize.smallTablet} {
+      display: none;
+    }
+  }
 `;
 
 const BottomContainer = styled.div`

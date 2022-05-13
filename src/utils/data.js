@@ -170,7 +170,7 @@ export const projectsData = [
     challenges:
       "Since this was the first application a lot of us had ever built, each step of the way we faced challenges. This first, was coming up with a design and discussing functionality. After a week of each of us creating a design for the application, we took elements from each person's vision and put it together. Once the design process was finished, we decided to come up with a game plan on how to tackle breaking the project into small enough chunks that we could finish the project in the month of allotted time. We ended up creating issues on a GitHub repository to keep us on track with completing our minimal viable product and to track bugs along the way. This allowed us to stay organized throughout the coding process",
     description:
-      "Looking for some information about a movie? Look no further! ToadTV delivers a quick and stylish way to find movies and view details about them.",
+      "Looking for some information about a movie? Look no further! ToadTV delivers a quick and stylish way to find movies and view details about them, such as ratings, actors, runtime, director, release year, and the plot ",
     colors: ["#8ED0EF", "#4A3800", "#986900", "#A89DBA", "#333333"],
     images: [
       <img src={toadtv1} alt="Toad Tribune Home Page" />,

@@ -1,6 +1,7 @@
 import React from "react";
 import { ArrowLeft, ArrowRight } from "../assets/navIcons";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Pagination = ({ current, data, setCurrent }) => {
   const nextHandler = () => {
@@ -21,7 +22,9 @@ const Pagination = ({ current, data, setCurrent }) => {
       />
       <BubbleContainer>
         {data.images.map((value, index) => {
-          return (<div>{current === index ? <ChoosenBubble/> : <Bubble/>}</div>)
+          return (
+            <div>{current === index ? <ChoosenBubble /> : <Bubble />}</div>
+          );
         })}
       </BubbleContainer>
       <ArrowRight
@@ -57,18 +60,18 @@ const Wrapper = styled.div`
 `;
 
 const Bubble = styled.div`
-    height: 10px;
-    width:10px;
-    background-color: #edf5e1;
-    border-radius: 50px;
-    margin: 0 10px;
-    position: relative;
+  height: 10px;
+  width: 10px;
+  background-color: #edf5e1;
+  border-radius: 50px;
+  margin: 0 10px;
+  position: relative;
 `;
 
 const ChoosenBubble = styled.div`
-    height: 10px;
-    width:10px;
-    background-color: #8ee4af;
-    border-radius: 50px;
-    margin: 0 10px;
+  height: 10px;
+  width: 10px;
+  background-color: #8ee4af;
+  border-radius: 50px;
+  margin: 0 10px;
 `;

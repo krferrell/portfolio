@@ -14,10 +14,16 @@ import {
   TsSvg,
 } from "../assets/skillsComponents";
 import { ToolTip } from "../components/";
+import { uiSize } from "../utils/mediaQ";
 
 const About = () => {
   return (
-    <TextContainer>
+    <TextContainer
+      as={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Text>
         Hello world! My name is Kenny and I am a frontend web developer based in
         California. What that really means is I get to bring ideas to life by
@@ -29,7 +35,7 @@ const About = () => {
         I am currently employed in a React apprenticeship program through
         Bitwise Industries. Throughout this apprenticeship I have been lucky
         enough to be able to collaborate with some amazing people on some fun
-        projects. While in the apprenticeship, I have also done some development 
+        projects. While in the apprenticeship, I have also done some development
       </Text>
       <Text>
         Before web development, my passion was mathematics and teaching. I
@@ -85,9 +91,12 @@ const TextContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   height: 80%;
   width: 85%;
+
+  @media ${uiSize.smallTablet} {
+    height: auto;
+  }
 `;
 
 const Text = styled.p`
@@ -95,6 +104,15 @@ const Text = styled.p`
   color: #edf5e1;
 
   margin-right: 60px;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  @media ${uiSize.mobile} {
+    font-size: 14px;
+  }
 `;
 
 const SkillsContainer = styled.div`
@@ -104,4 +122,13 @@ const SkillsContainer = styled.div`
   margin-right: 60px;
   height: 20%;
   width: 100%;
+
+  @media ${uiSize.smallTablet} {
+    /* height: 100%;
+    position: fixed;
+    width: 50px;
+    flex-direction: column;
+    right: 0;0 */
+    display: none;
+  }
 `;

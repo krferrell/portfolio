@@ -3,6 +3,7 @@ import styled from "styled-components";
 import emailjs from "@emailjs/browser";
 import { AnimatePresence, motion } from "framer-motion";
 import { ContactModal } from "../components";
+import { uiSize } from "../utils/mediaQ";
 
 const Contact = () => {
   const [isErrorText, setIsErrorText] = useState(false);
@@ -120,6 +121,10 @@ const ContentContainer = styled.div`
   flex-direction: column;
   width: 80%;
   margin: 0 auto;
+
+  @media ${uiSize.mobile}{
+      justify-content: center;
+    }
 `;
 
 const TextContainer = styled.div`
@@ -127,17 +132,39 @@ const TextContainer = styled.div`
   flex-direction: column;
   height: 60%;
   width: 50%;
+  
+  @media ${uiSize.smallTablet}{
+    width: 80%;
+  }
+  @media ${uiSize.mobile}{
+    width: 100%;
+  }
 `;
 
 const HeroText = styled.p`
   font-size: 32px;
   color: #edf5e1;
+
+  @media ${uiSize.smallTablet}{
+      font-size: 24px;
+    }
+    @media ${uiSize.mobile}{
+      font-size: 18px;
+    }
 `;
 
 const HeroTextLarge = styled(motion.p)`
   font-size: 48px;
   color: #8ee4af;
   margin-top: 25px;
+
+  @media ${uiSize.smallTablet}{
+      font-size: 36px;
+    }
+    @media ${uiSize.mobile}{
+      font-size: 28px;
+      margin-top: 20px;
+    }
 `;
 
 const InputContainer = styled.div`
@@ -151,6 +178,11 @@ const InputContainer = styled.div`
     width: 90%;
     margin-bottom: 20px;
     border-radius: 6px;
+
+    @media ${uiSize.mobile}{
+      height: 30px;
+      font-size: 12px;
+    }
   }
 
   .email {
@@ -158,11 +190,20 @@ const InputContainer = styled.div`
     width: 90%;
     margin-bottom: 20px;
     border-radius: 6px;
+
+    @media ${uiSize.mobile}{
+      height: 30px;
+      font-size: 12px;
+    }
   }
 
   .message {
     height: 120px;
     width: 90%;
+
+    @media ${uiSize.mobile}{
+      height: 80px;
+    }
   }
 `;
 
@@ -172,17 +213,34 @@ const Form = styled.form`
   border-radius: 14px;
   height: 100%;
   width: 85%;
-  padding: 20px 20px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media ${uiSize.smallTablet}{
+      width: 80%;
+    }
+    @media ${uiSize.mobile}{
+      width: 100%;
+      height: 80%;
+    }
 `;
 
 const FormContainer = styled.div`
   width: 50%;
   display: flex;
   margin-top: 50px;
+
+  @media ${uiSize.smallTablet}{
+      width: 100%;
+      justify-content: center;
+    }
+
+  @media ${uiSize.mobile}{
+    margin-top: 20px;
+    }
 `;
 
 const TextArea = styled.textarea`
@@ -194,6 +252,10 @@ const TextArea = styled.textarea`
   :focus {
     outline: #8ee4af;
     border-color: #8ee4af;
+  }
+
+  @media ${uiSize.mobile}{
+    font-size: 12px;
   }
 `;
 
@@ -222,6 +284,13 @@ const SubmitButton = styled.button`
   font-weight: bold;
   background-color: #8ee4af;
   color: #1a1a1a;
+
+  
+  @media ${uiSize.mobile}{
+    width: 30%;
+    height: 40px;
+    font-size: 12px; 
+    }
 `;
 
 const ContactFormBlurb = styled.p`
@@ -229,4 +298,9 @@ const ContactFormBlurb = styled.p`
   font-size: 24px;
   line-height: 24px;
   margin-bottom: 20px;
+  
+  @media ${uiSize.mobile}{
+    font-size: 14px;
+    text-align: center;
+  }
 `;
