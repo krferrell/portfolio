@@ -2,16 +2,19 @@ import { motion } from "framer-motion";
 import React from "react";
 import styled from "styled-components";
 import {
-  CssIcon,
-  FigmaIcon,
-  HtmlIcon,
-  JsIcon,
-  ReactIcon,
-  ReduxIcon,
-  StyledCompIcon,
-  TsIcon,
-} from "../assets/skillsIcons";
+  CssSvg,
+  FigmaSvg,
+  HtmlSvg,
+  JsSvg,
+  NodeJs,
+  ReactSvg,
+  ReduxSvg,
+  ScssSvg,
+  StyledCompSvg,
+  TsSvg,
+} from "../assets/skillsComponents";
 import { ToolTip } from "../components/";
+import { uiSize } from "../utils/mediaQ";
 
 const About = () => {
   return (
@@ -22,43 +25,57 @@ const About = () => {
       exit={{ opacity: 0 }}
     >
       <Text>
-        Hello world! My name is Kenny and I am a frontend web developer. I am
-        currently finishing a up state recognized React apprenticeship. I have
-        been able to collaborate with some amazing people on some fun projects.
-        I have also gotten the oppurtunity to style and create some modern
-        projects that utilize all of the skills you see below.
+        Hello world! My name is Kenny and I am a frontend web developer based in
+        California. What that really means is I get to bring ideas to life by
+        creating websites. When I am not working, I enjoy spending time with my
+        partner, Mackenzie and our 2 year old son, Kenny III. Some of my hobbies
+        include going to the gym, playing disc golf, and crocheting.
       </Text>
       <Text>
-        Before web development, my passion was mathematics. I earned my
-        bachelors of science in mathematics from CSU Fresno. I very much enjoyed
-        solving the complex mysteries that math had to offer. I have since grown
-        fond of solving the complex issues that arise while trying to archetict,
-        design, and build an application.
+        I am currently employed in a React apprenticeship program through
+        Bitwise Industries. Throughout this apprenticeship I have been lucky
+        enough to be able to collaborate with some amazing people on some fun
+        projects. While in the apprenticeship, I have also done some development
+      </Text>
+      <Text>
+        Before web development, my passion was mathematics and teaching. I
+        earned my bachelors of science in mathematics from CSU Fresno. I very
+        much enjoyed solving the complex mysteries that math had to offer. I
+        also enjoyed being able to help others grasp challenging math concepts.
+        I was a math tutor for 2 years and then trained math tutors for another
+        2 years. My long term goal is to become an expert in fullstack
+        development and be in a position where I can help others learn and grow.
       </Text>
       <SkillsContainer>
         <ToolTip direction="top" content="CSS">
-          <CssIcon />
+          <CssSvg />
         </ToolTip>
         <ToolTip direction="top" content="Figma">
-          <FigmaIcon />
+          <FigmaSvg />
         </ToolTip>
         <ToolTip direction="top" content="Html">
-          <HtmlIcon />
+          <HtmlSvg />
         </ToolTip>
         <ToolTip direction="top" content="JavaScript">
-          <JsIcon />
+          <JsSvg />
+        </ToolTip>
+        <ToolTip direction="top" content="NodeJs">
+          <NodeJs />
         </ToolTip>
         <ToolTip direction="top" content="React">
-          <ReactIcon />
+          <ReactSvg />
         </ToolTip>
         <ToolTip direction="top" content="Redux">
-          <ReduxIcon />
+          <ReduxSvg />
+        </ToolTip>
+        <ToolTip direction="top" content="SCSS">
+          <ScssSvg />
         </ToolTip>
         <ToolTip direction="top" content="Styled Components">
-          <StyledCompIcon />
+          <StyledCompSvg />
         </ToolTip>
         <ToolTip direction="top" content="TypeScript">
-          <TsIcon />
+          <TsSvg />
         </ToolTip>
       </SkillsContainer>
     </TextContainer>
@@ -68,22 +85,34 @@ const About = () => {
 export default About;
 
 const TextContainer = styled.div`
-  margin: 0 auto;
+  margin: 20px auto;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-
   height: 80%;
   width: 85%;
+
+  @media ${uiSize.smallTablet} {
+    height: auto;
+  }
 `;
 
 const Text = styled.p`
-  font-size: 32px;
+  font-size: 28px;
   color: #edf5e1;
 
   margin-right: 60px;
+
+  @media ${uiSize.smallTablet} {
+    font-size: 26px;
+    margin: 0;
+  }
+
+  @media ${uiSize.mobile} {
+    font-size: 14px;
+  }
 `;
 
 const SkillsContainer = styled.div`
@@ -93,4 +122,13 @@ const SkillsContainer = styled.div`
   margin-right: 60px;
   height: 20%;
   width: 100%;
+
+  @media ${uiSize.smallTablet} {
+    /* height: 100%;
+    position: fixed;
+    width: 50px;
+    flex-direction: column;
+    right: 0;0 */
+    display: none;
+  }
 `;
